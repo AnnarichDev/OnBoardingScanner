@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by NB1003917 on 1/3/2567 BE.
+  
+*/
+
+"qr_code_title" = "QR Code";
+"code_invitation_title" = "Invitation Code";
+
+// QR Code
+"qr_code_message" = "Received your QR code from\nyour administrator";
+
+// Code invite
+"enter_code_invite" = "Invitation code";
+"enter_code_invite_message" = "Received your invitation code from\nyour administrator";
+"verify_button_title" = "Verify";
+
+// Alert Camera
+"alert_camera_title" = "Allow access to your Camera";
+"alert_camera_message" = "Please change your settings to allow access your Camera.";
+"alert_not_now" = "Not Now";
+"alert_open_settings" = "Open Settings";

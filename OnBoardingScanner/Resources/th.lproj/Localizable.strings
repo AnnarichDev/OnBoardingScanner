@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by NB1003917 on 1/3/2567 BE.
+  
+*/
+
+"qr_code_title" = "QR Code";
+"code_invitation_title" = "รหัสคำเชิญ";
+
+// QR Code
+"qr_code_message" = "ติดต่อรับ QR Code\nได้จากเจ้าหน้าที่ประจำโครงการ";
+
+// Code invite
+"enter_code_invite" = "ระบุรหัสคำเชิญ";
+"enter_code_invite_message" = "ติดต่อรับรหัสคำเชิญ\nได้จากเจ้าหน้าที่ประจำโครงการ";
+"verify_button_title" = "ยืนยันตัวตน";
+ 
+// Alert Camera
+"alert_camera_title" = "อนุญาตให้เข้าถึงกล้องถ่ายรูปของคุณ";
+"alert_camera_message" = "กรุณาเปลี่ยนการตั้งค่าของคุณให้อนุญาตเข้าถึงกล้องถ่ายรูป";
+"alert_not_now" = "ไม่ใช่ตอนนี้";
+"alert_open_settings" = "เปิดเมนูตั้งค่า";
