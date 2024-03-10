@@ -1,5 +1,5 @@
 //
-//  QRScannerViewController.swift
+//  OnBoardingScannerViewController.swift
 //  Pods
 //
 //  Created by NB1003917 on 28/2/2567 BE.
@@ -13,19 +13,19 @@
 import UIKit
 import BSImagePicker
 
-public protocol QRScannerViewControllerDelegate: AnyObject {
-    func didReceiveQRScannerResult(_ string: String)
+public protocol OnBoardingScannerViewControllerDelegate: AnyObject {
+    func didReceiveOnBoardingScannerResult(_ string: String)
 }
 
-protocol QRScannerDisplayLogic: class {
-    func displaySomething(viewModel: QRScanner.Something.ViewModel)
+protocol OnBoardingScannerDisplayLogic: class {
+    func displaySomething(viewModel: OnBoardingScanner.Something.ViewModel)
 }
 
-open class QRScannerViewController: UIViewController, QRScannerDisplayLogic {
-    var interactor: QRScannerBusinessLogic?
-    var router: (NSObjectProtocol & QRScannerRoutingLogic & QRScannerDataPassing)?
+open class OnBoardingScannerViewController: UIViewController, OnBoardingScannerDisplayLogic {
+    var interactor: OnBoardingScannerBusinessLogic?
+    var router: (NSObjectProtocol & OnBoardingScannerRoutingLogic & OnBoardingScannerDataPassing)?
     
-    public weak var delegate: QRScannerViewControllerDelegate?
+    public weak var delegate: OnBoardingScannerViewControllerDelegate?
     
     private var paginationView: PaginationView?
     private let buttonStackView = UIStackView()
@@ -48,9 +48,9 @@ open class QRScannerViewController: UIViewController, QRScannerDisplayLogic {
     
     private func setup() {
         let viewController = self
-        let interactor = QRScannerInteractor()
-        let presenter = QRScannerPresenter()
-        let router = QRScannerRouter()
+        let interactor = OnBoardingScannerInteractor()
+        let presenter = OnBoardingScannerPresenter()
+        let router = OnBoardingScannerRouter()
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -58,8 +58,8 @@ open class QRScannerViewController: UIViewController, QRScannerDisplayLogic {
         router.viewController = viewController
         router.dataStore = interactor
         
-        // TODO: - Remove this dummy setLanguage
-        BSImagePickerInstance.shared.setLanguage(.th)
+        let lang: BSImagePicker.Language = OnBoardingScannerInstance.shared.language == .th ? .th : .en
+        BSImagePickerInstance.shared.setLanguage(lang)
         modalPresentationStyle = .fullScreen
     }
     
@@ -90,7 +90,7 @@ open class QRScannerViewController: UIViewController, QRScannerDisplayLogic {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    func displaySomething(viewModel: QRScanner.Something.ViewModel) {
+    func displaySomething(viewModel: OnBoardingScanner.Something.ViewModel) {
         //nameTextField.text = viewModel.name
     }
     
@@ -105,10 +105,10 @@ open class QRScannerViewController: UIViewController, QRScannerDisplayLogic {
     }
 }
 
-private extension QRScannerViewController {
+private extension OnBoardingScannerViewController {
     
     func setUpViews() {
-        let request = QRScanner.Something.Request()
+        let request = OnBoardingScanner.Something.Request()
         interactor?.doSomething(request: request)
         
         view.backgroundColor = .white
@@ -171,7 +171,7 @@ private extension QRScannerViewController {
     }
 }
 // MARK: - Private
-private extension QRScannerViewController {
+private extension OnBoardingScannerViewController {
     func openImageGallery() {
         stopScanning()
         let imagePicker = ImagePickerController()
@@ -191,7 +191,7 @@ private extension QRScannerViewController {
             Helper.shared.convertAssetToImage(asset: asset) { image in
                 guard let image else { return }
                 let code = Helper.shared.string(from: image)
-                self.didReceiveQRScannerResult(code)
+                self.didReceiveOnBoardingScannerResult(code)
             }
         }, completion: {
             let finish = Date()
@@ -199,20 +199,20 @@ private extension QRScannerViewController {
         })
     }
     
-    func didReceiveQRScannerResult(_ string: String) {
-        print("LLOG: didReceiveQRScannerResult", string)
+    func didReceiveOnBoardingScannerResult(_ string: String) {
+        print("LLOG: didReceiveOnBoardingScannerResult", string)
         DispatchQueue.main.async { [weak self] in
             guard let self else { return }
             self.dismiss(animated: true) { [weak self] in
                 guard let self else { return }
-                self.delegate?.didReceiveQRScannerResult(string)
+                self.delegate?.didReceiveOnBoardingScannerResult(string)
             }
         }
 
     }
 }
 
-extension QRScannerViewController: QRCodeViewDelegate {
+extension OnBoardingScannerViewController: QRCodeViewDelegate {
     
     func qrScanningDidFail() {
         print("LLOG: qrScanningDidFail")
@@ -223,7 +223,7 @@ extension QRScannerViewController: QRCodeViewDelegate {
             qrScanningDidFail()
             return
         }
-        didReceiveQRScannerResult(string)
+        didReceiveOnBoardingScannerResult(string)
     }
     
     func qrScanningDidStop() {}
@@ -231,8 +231,8 @@ extension QRScannerViewController: QRCodeViewDelegate {
     func qrScanningFailed(title: String, message: String) {}
     
     func qrScaningPresentAlert() {
-        let bundle = Bundle(for: type(of: self))
-        let lang = Settings.shared.language
+//        let bundle = Bundle(for: type(of: self))
+//        let lang = Settings.shared.language
         let title = "alert_camera_title".localized()
         let message = "alert_camera_message".localized()
         let alert = UIAlertController(title: title,
@@ -260,7 +260,7 @@ extension QRScannerViewController: QRCodeViewDelegate {
     }
 }
 
-extension QRScannerViewController: PaginationViewDelegate {
+extension OnBoardingScannerViewController: PaginationViewDelegate {
     
     func paginationDidSelected(_ index: Int) {
         // MARK: - Index = camera scanner
@@ -273,7 +273,7 @@ extension QRScannerViewController: PaginationViewDelegate {
     }
 }
 
-extension QRScannerViewController: CodeInputViewDelegate {
+extension OnBoardingScannerViewController: CodeInputViewDelegate {
 
     func didSubmitted(_ string: String) {
          dismiss(animated: true)

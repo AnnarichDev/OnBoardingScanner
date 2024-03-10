@@ -1,5 +1,5 @@
 //
-//  QRScannerModels.swift
+//  OnBoardingScannerModels.swift
 //  Pods
 //
 //  Created by NB1003917 on 28/2/2567 BE.
@@ -12,7 +12,7 @@
 
 import UIKit
 
-enum QRScanner {
+enum OnBoardingScanner {
     // MARK: Use cases
     
     enum Something {

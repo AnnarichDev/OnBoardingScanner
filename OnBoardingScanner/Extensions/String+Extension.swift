@@ -16,9 +16,9 @@ extension String {
     }
     
     func localized() -> String {
-        let currentLang = Settings.shared.language.key
-        print("LLOG: pathResource", Bundle(for: QRScannerViewController.self).path(forResource: currentLang, ofType: "lproj"))
-        guard let pathResource = Bundle(for: QRScannerViewController.self).path(forResource: currentLang, ofType: "lproj"),
+        let currentLang = OnBoardingScannerInstance.shared.language.key
+        print("LLOG: pathResource", Bundle(for: OnBoardingScannerViewController.self).path(forResource: currentLang, ofType: "lproj"))
+        guard let pathResource = Bundle(for: OnBoardingScannerViewController.self).path(forResource: currentLang, ofType: "lproj"),
               let bundle = Bundle(path: pathResource) else { return self }
         return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "", comment: "")
     }

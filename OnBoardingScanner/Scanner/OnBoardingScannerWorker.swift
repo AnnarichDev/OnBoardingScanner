@@ -1,5 +1,5 @@
 //
-//  QRScannerWorker.swift
+//  OnBoardingScannerWorker.swift
 //  Pods
 //
 //  Created by NB1003917 on 28/2/2567 BE.
@@ -12,7 +12,7 @@
 
 import UIKit
 
-class QRScannerWorker {
+class OnBoardingScannerWorker {
     
     func doSomeWork() {}
 }

@@ -10,24 +10,22 @@ import UIKit
 extension UIColor {
     
     // MARK: - Private
-//    private static let theme: Theme = HSAVoteInstance.shared.theme
+    private static let theme: Theme = OnBoardingScannerInstance.shared.theme
     
     public static let blackColor = UIColor(hexString: "#000000")
     
     public static let primaryColor: UIColor = {
-//        switch theme {
-//        case .LPA: return .blackColor
-//        case .HSA: return UIColor(hexString: "#022555")
-//        }
-        .blackColor
+        switch theme {
+        case .LPA: return .blackColor
+        case .HSA: return UIColor(hexString: "#022555")
+        }
     }()
     
     public static let secondaryColor: UIColor = {
-//        switch theme {
-//        case .LPA: return UIColor(hexString: "#E6A500")
-//        case .HSA: return UIColor(hexString: "#0163E0")
-//        }
-        UIColor(hexString: "#0163E0")
+        switch theme {
+        case .LPA: return UIColor(hexString: "#E6A500")
+        case .HSA: return UIColor(hexString: "#0163E0")
+        }
     }()
     
     /// Dusty Gray hex: #9B9B9B
@@ -53,11 +51,10 @@ extension UIColor {
     
     /// Text Title Color
     public static let textTitleColor: UIColor = {
-//        switch theme {
-//        case .LPA: return .blackColor
-//        case .HSA: return .secondaryColor
-//        }
-        .secondaryColor
+        switch theme {
+        case .LPA: return .blackColor
+        case .HSA: return .secondaryColor
+        }
     }()
     
     /// Link Color hex: #0163E0
@@ -68,21 +65,19 @@ extension UIColor {
     public static let darkTransparent = darkGrayColor.withAlphaComponent(0.6)
     
     public static let AlphaBallotColor: UIColor = {
-//        switch theme {
-//        case .LPA: return .secondaryColor.withAlphaComponent(0.2) //UIColor(hexString: "#E6A500", alpha: 0.2)
-//        case .HSA: return UIColor(hexString: "#ECF4FF")
-//        }
-        return UIColor(hexString: "#ECF4FF")
+        switch theme {
+        case .LPA: return .secondaryColor.withAlphaComponent(0.2) //UIColor(hexString: "#E6A500", alpha: 0.2)
+        case .HSA: return UIColor(hexString: "#ECF4FF")
+        }
     }()
     
     public static let bgPrgressBarNotPass = UIColor(hexString: "#BBBBBB")
     public static let bgProgressBar = UIColor(hexString: "#EBEBEB")
     public static let progressBarTint: UIColor = {
-//        switch theme {
-//        case .LPA: return .secondaryColor.withAlphaComponent(0.2)
-//        case .HSA: return UIColor(hexString: "#A9CFFF")
-//        }
-        UIColor(hexString: "#A9CFFF")
+        switch theme {
+        case .LPA: return .secondaryColor.withAlphaComponent(0.2)
+        case .HSA: return UIColor(hexString: "#A9CFFF")
+        }
     }()
     
     static let BGLightGrayColor = UIColor(hexString: "#F4F3F4")

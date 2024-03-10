@@ -37,7 +37,7 @@ extension UIFont {
     }
     
     private static func registerFont(withName name: String, fileExtension: String) {
-        let frameworkBundle = Bundle(for: QRScannerViewController.self)
+        let frameworkBundle = Bundle(for: OnBoardingScannerViewController.self)
         let pathForResourceString = frameworkBundle.path(forResource: name, ofType: fileExtension)
         let fontData = NSData(contentsOfFile: pathForResourceString!)
         let dataProvider = CGDataProvider(data: fontData!)

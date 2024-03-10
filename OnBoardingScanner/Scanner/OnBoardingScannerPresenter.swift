@@ -1,5 +1,5 @@
 //
-//  QRScannerPresenter.swift
+//  OnBoardingScannerPresenter.swift
 //  Pods
 //
 //  Created by NB1003917 on 28/2/2567 BE.
@@ -12,18 +12,18 @@
 
 import UIKit
 
-protocol QRScannerPresentationLogic {
-    func presentSomething(response: QRScanner.Something.Response)
+protocol OnBoardingScannerPresentationLogic {
+    func presentSomething(response: OnBoardingScanner.Something.Response)
 }
 
-class QRScannerPresenter: QRScannerPresentationLogic {
+class OnBoardingScannerPresenter: OnBoardingScannerPresentationLogic {
     
-    weak var viewController: QRScannerDisplayLogic?
+    weak var viewController: OnBoardingScannerDisplayLogic?
     
     // MARK: Do something
     
-    func presentSomething(response: QRScanner.Something.Response) {
-        let viewModel = QRScanner.Something.ViewModel()
+    func presentSomething(response: OnBoardingScanner.Something.Response) {
+        let viewModel = OnBoardingScanner.Something.ViewModel()
         viewController?.displaySomething(viewModel: viewModel)
     }
 }

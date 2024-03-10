@@ -1,5 +1,5 @@
 //
-//  Settings.swift
+//  OnBoardingScannerInstance.swift
 //  OnBoardingScanner
 //
 //  Created by NB1003917 on 28/2/2567 BE.
@@ -17,7 +17,7 @@ public enum Language {
     }
 }
 
-enum Theme {
+public enum Theme {
     
     case LPA
     case HSA
@@ -30,34 +30,23 @@ enum Theme {
     }
 }
 
-public class Settings {
+public class OnBoardingScannerInstance {
     
-    public static let shared = Settings()
+    public static let shared = OnBoardingScannerInstance()
     
     private(set) var language: Language
-    private(set) var environment: Environment
-    var theme: Theme
+    private(set) var theme: Theme
     
     public init() {
         language = .en
-        environment = .hsaDevelopment
-        theme = environment == .lpaProduction || environment == .lpaDevelopment ? .LPA : .HSA
+        theme = .HSA
     }
     
     public func setLanguage(_ lang: Language) {
         language = lang
     }
     
-    public func setEnvironment(_ env: Environment) {
-        environment = env
-        theme = environment == .lpaProduction || environment == .lpaDevelopment ? .LPA : .HSA
+    public func setTheme(_ theme: Theme) {
+        self.theme = theme
     }
-}
-
-public enum Environment {
-    
-    case hsaProduction
-    case hsaDevelopment
-    case lpaProduction
-    case lpaDevelopment
 }
